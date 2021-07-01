@@ -3,8 +3,10 @@
     "name": "AppUpload",
     "slug": "AppUpload",
     "version": "1.0.0",
+    "sdkVersion": "40.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "scheme": "AppUpload",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

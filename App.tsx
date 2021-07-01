@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
+import {
+  useFonts,
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
+
+import { AuthProvider } from './src/hooks/authContext';
+
+import Main from './src/routes';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Poppins_300Light,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold
+  });
+
+  if (!fontsLoaded) {
+    return <ActivityIndicator color="#000" size={30} />;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar
+        backgroundColor="transparent"
+        barStyle="dark-content"
+        translucent
+      />
+      <AuthProvider>
+        <Main />
+      </AuthProvider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
